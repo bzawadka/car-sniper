@@ -1,6 +1,6 @@
 package pl.bzawadka.model;
 
-public class Car {
+public class Car extends BaseObject {
     private Make make;
     private String model;
     private int year;

@@ -1,6 +1,6 @@
 package pl.bzawadka.model;
 
-public class Engine {
+public class Engine extends BaseObject {
     private Fuel fuel;
     private double size;
     private int power;
