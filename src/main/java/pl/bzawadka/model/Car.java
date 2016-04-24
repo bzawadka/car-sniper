@@ -4,17 +4,15 @@ public class Car extends BaseObject {
     private Make make;
     private String model;
     private int year;
-    private int price;
-    private Currency currency;
+    private Price price;
     private SaleType saleType;
     private Engine engine;
 
-    public Car(Make make, String model, int year, int price, Currency currency, SaleType saleType, Engine engine) {
+    public Car(Make make, String model, int year, Price price, SaleType saleType, Engine engine) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.price = price;
-        this.currency = currency;
         this.saleType = saleType;
         this.engine = engine;
     }
@@ -31,12 +29,8 @@ public class Car extends BaseObject {
         return year;
     }
 
-    public int getPrice() {
+    public Price getPrice() {
         return price;
-    }
-
-    public Currency getCurrency() {
-        return currency;
     }
 
     public SaleType getSaleType() {
@@ -55,8 +49,7 @@ public class Car extends BaseObject {
         private Make make;
         private String model;
         private int year;
-        private int price;
-        private Currency currency;
+        private Price price;
         private SaleType saleType;
         private Engine engine;
 
@@ -75,13 +68,8 @@ public class Car extends BaseObject {
             return this;
         }
 
-        public Builder setPrice(int price) {
+        public Builder setPrice(Price price) {
             this.price = price;
-            return this;
-        }
-
-        public Builder setCurrency(Currency currency) {
-            this.currency = currency;
             return this;
         }
 
@@ -96,7 +84,7 @@ public class Car extends BaseObject {
         }
 
         public Car createCar() {
-            return new Car(make, model, year, price, currency, saleType, engine);
+            return new Car(make, model, year, price, saleType, engine);
         }
     }
 }

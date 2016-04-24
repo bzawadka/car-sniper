@@ -15,8 +15,10 @@ public class CarTest {
         Car car = Car.builder()
                 .setMake(AUDI)
                 .setModel("A4")
-                .setPrice(10000)
-                .setCurrency(CHF)
+                .setPrice(Price.builder()
+                        .setPrice(10000)
+                        .setCurrency(CHF)
+                        .createPrice())
                 .setYear(2008)
                 .setSaleType(AUCTION)
                 .setEngine(Engine.builder()
@@ -27,6 +29,8 @@ public class CarTest {
                 .createCar();
 
         assertThat(car).matches(
-                c -> c.toString().contains("[make=AUDI,model=A4,year=2008,price=10000,currency=CHF,saleType=AUCTION"));
+                c -> c.toString().contains("[make=AUDI,model=A4,year=2008"));
+        assertThat(car).matches(
+                c -> c.toString().contains("price=10000,currency=CHF"));
     }
 }

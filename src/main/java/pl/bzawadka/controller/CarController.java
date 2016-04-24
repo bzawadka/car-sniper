@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bzawadka.model.Car;
 import pl.bzawadka.model.Engine;
+import pl.bzawadka.model.Price;
 
 import static pl.bzawadka.model.Currency.CHF;
 import static pl.bzawadka.model.Fuel.DIESEL;
@@ -18,8 +19,10 @@ public class CarController {
         return Car.builder()
                 .setMake(AUDI)
                 .setModel("A4")
-                .setPrice(10000)
-                .setCurrency(CHF)
+                .setPrice(Price.builder()
+                        .setPrice(10000)
+                        .setCurrency(CHF)
+                        .createPrice())
                 .setYear(2008)
                 .setSaleType(AUCTION)
                 .setEngine(Engine.builder()
