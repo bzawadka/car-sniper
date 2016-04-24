@@ -5,14 +5,14 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
-import pl.bzawadka.model.Car;
-import pl.bzawadka.model.Currency;
-import pl.bzawadka.model.Price;
+import pl.bzawadka.model.*;
 
 import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static pl.bzawadka.model.Fuel.DIESEL;
 import static pl.bzawadka.model.Make.AUDI;
+import static pl.bzawadka.model.SaleType.FIXED_PRICE;
 
 public class CarParserTest {
 
@@ -34,15 +34,14 @@ public class CarParserTest {
                     .setPrice(12500)
                     .setCurrency(Currency.CHF)
                     .createPrice())
-/*
-                .setYear(2010)
                 .setSaleType(FIXED_PRICE)
                 .setEngine(Engine.builder()
                         .setFuel(DIESEL)
+/*
                         .setSize(2.7)
                         .setPower(190)
-                        .createEngine())
 */
+                        .createEngine())
                 .createCar();
 
         Car actual = underTest.parseCar(doc);
