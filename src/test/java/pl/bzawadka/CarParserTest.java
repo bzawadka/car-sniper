@@ -29,12 +29,12 @@ public class CarParserTest {
         Car expected = Car.builder()
                 .setMake(AUDI)
                 .setModel("A6")
+                .setYear(2010)
                 .setPrice(Price.builder()
                     .setPrice(12500)
                     .setCurrency(Currency.CHF)
                     .createPrice())
 /*
-                .setCurrency(CHF)
                 .setYear(2010)
                 .setSaleType(FIXED_PRICE)
                 .setEngine(Engine.builder()
