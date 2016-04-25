@@ -86,11 +86,12 @@ public class CarParser {
     }
 
     private Engine getEngine(Document doc) {
-        String subTitle = getSubTitle(doc);
-        String fuelType = StringUtils.split(StringUtils.remove(subTitle, ","), " ")[0];
+        String fuelType = StringUtils.split(StringUtils.remove(getSubTitle(doc), ","), " ")[0];
+        double engineSize = EngineSizeParser.parseEngineSize(getPrimaryTitle(doc));
 
         return Engine.builder()
                 .setFuel(Fuel.from(fuelType))
+                .setSize(engineSize)
                 .createEngine();
     }
 }
