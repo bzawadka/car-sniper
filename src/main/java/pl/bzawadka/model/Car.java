@@ -1,5 +1,7 @@
 package pl.bzawadka.model;
 
+import java.net.URL;
+
 public class Car extends BaseObject {
     private Make make;
     private String model;
@@ -7,14 +9,16 @@ public class Car extends BaseObject {
     private Price price;
     private SaleType saleType;
     private Engine engine;
+    private URL url;
 
-    public Car(Make make, String model, int year, Price price, SaleType saleType, Engine engine) {
+    public Car(Make make, String model, int year, Price price, SaleType saleType, Engine engine, URL url) {
         this.make = make;
         this.model = model;
         this.year = year;
         this.price = price;
         this.saleType = saleType;
         this.engine = engine;
+        this.url = url;
     }
 
     public Make getMake() {
@@ -41,6 +45,10 @@ public class Car extends BaseObject {
         return engine;
     }
 
+    public URL getUrl() {
+        return url;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -52,6 +60,7 @@ public class Car extends BaseObject {
         private Price price;
         private SaleType saleType;
         private Engine engine;
+        private URL url;
 
         public Builder setMake(Make make) {
             this.make = make;
@@ -83,8 +92,13 @@ public class Car extends BaseObject {
             return this;
         }
 
+        public Builder setUrl(URL url) {
+            this.url = url;
+            return this;
+        }
+
         public Car createCar() {
-            return new Car(make, model, year, price, saleType, engine);
+            return new Car(make, model, year, price, saleType, engine, url);
         }
     }
 }

@@ -5,9 +5,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
-import pl.bzawadka.model.*;
+import pl.bzawadka.model.Car;
+import pl.bzawadka.model.Currency;
+import pl.bzawadka.model.Engine;
+import pl.bzawadka.model.Price;
 
 import java.io.IOException;
+import java.net.URL;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static pl.bzawadka.model.Fuel.DIESEL;
@@ -40,6 +44,7 @@ public class CarParserTest {
                         .setSize(2.7)
                         .setPower(190)
                         .createEngine())
+                .setUrl(new URL("http://comparis.ch/carfinder/marktplatz/details/show/20361616"))
                 .createCar();
 
         Car actual = underTest.parseCar(doc);
