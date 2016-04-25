@@ -88,10 +88,18 @@ public class CarParser {
     private Engine getEngine(Document doc) {
         String fuelType = StringUtils.split(StringUtils.remove(getSubTitle(doc), ","), " ")[0];
         double engineSize = EngineSizeParser.parseEngineSize(getPrimaryTitle(doc));
-
+        int enginePower = getEnginePower(doc);
         return Engine.builder()
                 .setFuel(Fuel.from(fuelType))
                 .setSize(engineSize)
+                .setPower(enginePower)
                 .createEngine();
+    }
+
+    private int getEnginePower(Document doc) {
+        Element gridElement = getGridElement(doc, 3);
+        Element subElement = getSubElement(gridElement, 1);
+        String powerInPs = StringUtils.remove(subElement.text(), " PS");
+        return Integer.parseInt(powerInPs);
     }
 }

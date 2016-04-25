@@ -38,9 +38,7 @@ public class CarParserTest {
                 .setEngine(Engine.builder()
                         .setFuel(DIESEL)
                         .setSize(2.7)
-/*
                         .setPower(190)
-*/
                         .createEngine())
                 .createCar();
 

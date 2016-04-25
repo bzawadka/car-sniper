@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 public class EngineSizeParser {
     private static Logger LOGGER = LoggerFactory.getLogger(EngineSizeParser.class);
+
     private static final Pattern ENGINE_SIZE_PATTERN = Pattern.compile("(.*)(\\d.\\d)(.*)");
     private static final int ENGINE_SIZE_REGEX_GROUP_NO = 2;
     private static final double ENGINE_SIZE_NOT_FOUND_VALUE = 0.0;
