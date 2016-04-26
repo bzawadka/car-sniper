@@ -16,21 +16,21 @@ public class Garage {
 
     public static Car audiA4() {
         return Car.builder()
-                .setMake(AUDI)
-                .setModel("A4")
-                .setYear(2008)
-                .setPrice(Price.builder()
-                        .setPrice(10000)
-                        .setCurrency(CHF)
-                        .createPrice())
-                .setSaleType(AUCTION)
-                .setEngine(Engine.builder()
-                        .setFuel(DIESEL)
-                        .setSize(2.0)
-                        .setPower(140)
-                        .createEngine())
-                .setUrl(url())
-                .createCar();
+                .withMake(AUDI)
+                .withModel("A4")
+                .withYear(2008)
+                .withPrice(Price.builder()
+                        .withPrice(10000)
+                        .withCurrency(CHF)
+                        .build())
+                .withSaleType(AUCTION)
+                .withEngine(Engine.builder()
+                        .withFuel(DIESEL)
+                        .withSize(2.0)
+                        .withPower(140)
+                        .build())
+                .withUrl(url())
+                .build();
     }
 
     private static URL url() {

@@ -1,7 +1,6 @@
 package pl.bzawadka.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -71,7 +70,6 @@ public class Car extends BaseObject {
         return new Builder();
     }
 
-    @JsonPOJOBuilder(buildMethodName = "createCar", withPrefix = "set")
     public static class Builder {
         private String id;
         private Make make;
@@ -83,47 +81,47 @@ public class Car extends BaseObject {
         private URL url;
 
 
-        public Builder setId(String id) {
+        public Builder withId(String id) {
             this.id = id;
             return this;
         }
 
-        public Builder setMake(Make make) {
+        public Builder withMake(Make make) {
             this.make = make;
             return this;
         }
 
-        public Builder setModel(String model) {
+        public Builder withModel(String model) {
             this.model = model;
             return this;
         }
 
-        public Builder setYear(int year) {
+        public Builder withYear(int year) {
             this.year = year;
             return this;
         }
 
-        public Builder setPrice(Price price) {
+        public Builder withPrice(Price price) {
             this.price = price;
             return this;
         }
 
-        public Builder setSaleType(SaleType saleType) {
+        public Builder withSaleType(SaleType saleType) {
             this.saleType = saleType;
             return this;
         }
 
-        public Builder setEngine(Engine engine) {
+        public Builder withEngine(Engine engine) {
             this.engine = engine;
             return this;
         }
 
-        public Builder setUrl(URL url) {
+        public Builder withUrl(URL url) {
             this.url = url;
             return this;
         }
 
-        public Car createCar() {
+        public Car build() {
             return new Car(id, make, model, year, price, saleType, engine, url);
         }
     }

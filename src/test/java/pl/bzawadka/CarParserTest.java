@@ -31,21 +31,21 @@ public class CarParserTest {
     public void testParseCarFromComparisHtml() throws Exception {
         Document doc = readFile("audi-a6-2.7.html");
         Car expected = Car.builder()
-                .setMake(AUDI)
-                .setModel("A6")
-                .setYear(2010)
-                .setPrice(Price.builder()
-                    .setPrice(12500)
-                    .setCurrency(Currency.CHF)
-                    .createPrice())
-                .setSaleType(FIXED_PRICE)
-                .setEngine(Engine.builder()
-                        .setFuel(DIESEL)
-                        .setSize(2.7)
-                        .setPower(190)
-                        .createEngine())
-                .setUrl(new URL("http://comparis.ch/carfinder/marktplatz/details/show/20361616"))
-                .createCar();
+                .withMake(AUDI)
+                .withModel("A6")
+                .withYear(2010)
+                .withPrice(Price.builder()
+                    .withPrice(12500)
+                    .withCurrency(Currency.CHF)
+                    .build())
+                .withSaleType(FIXED_PRICE)
+                .withEngine(Engine.builder()
+                        .withFuel(DIESEL)
+                        .withSize(2.7)
+                        .withPower(190)
+                        .build())
+                .withUrl(new URL("http://comparis.ch/carfinder/marktplatz/details/show/20361616"))
+                .build();
 
         Car actual = underTest.parseCar(doc);
         assertThat(actual).isEqualToComparingFieldByField(expected);

@@ -1,7 +1,6 @@
 package pl.bzawadka.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonDeserialize(builder = Price.Builder.class)
 public class Price extends BaseObject {
@@ -25,22 +24,21 @@ public class Price extends BaseObject {
         return new Builder();
     }
 
-    @JsonPOJOBuilder(buildMethodName = "createPrice", withPrefix = "set")
     public static class Builder {
         private int price;
         private Currency currency;
 
-        public Builder setPrice(int price) {
+        public Builder withPrice(int price) {
             this.price = price;
             return this;
         }
 
-        public Builder setCurrency(Currency currency) {
+        public Builder withCurrency(Currency currency) {
             this.currency = currency;
             return this;
         }
 
-        public Price createPrice() {
+        public Price build() {
             return new Price(price, currency);
         }
     }

@@ -27,14 +27,14 @@ public class CarParser {
 
     public Car parseCar(Document doc) {
         return Car.builder()
-                .setMake(getMake(doc))
-                .setModel(getModel(doc))
-                .setYear(getYear(doc))
-                .setPrice(getPrice(doc))
-                .setSaleType(FIXED_PRICE)
-                .setEngine(getEngine(doc))
-                .setUrl(getUrl(doc))
-                .createCar();
+                .withMake(getMake(doc))
+                .withModel(getModel(doc))
+                .withYear(getYear(doc))
+                .withPrice(getPrice(doc))
+                .withSaleType(FIXED_PRICE)
+                .withEngine(getEngine(doc))
+                .withUrl(getUrl(doc))
+                .build();
     }
 
     private Make getMake(Document doc) {
@@ -61,9 +61,9 @@ public class CarParser {
         Elements b = priceDiv.get(0).select("b");
         String[] price = StringUtils.split(b.text(), " ");
         return Price.builder()
-                .setCurrency(Currency.valueOf(price[0]))
-                .setPrice(Integer.parseInt(StringUtils.remove(price[1], "'")))
-                .createPrice();
+                .withCurrency(Currency.valueOf(price[0]))
+                .withPrice(Integer.parseInt(StringUtils.remove(price[1], "'")))
+                .build();
     }
 
     private Engine getEngine(Document doc) {
@@ -71,10 +71,10 @@ public class CarParser {
         double engineSize = EngineSizeParser.parseEngineSize(getPrimaryTitle(doc));
         int enginePower = getEnginePower(doc);
         return Engine.builder()
-                .setFuel(Fuel.from(fuelType))
-                .setSize(engineSize)
-                .setPower(enginePower)
-                .createEngine();
+                .withFuel(Fuel.from(fuelType))
+                .withSize(engineSize)
+                .withPower(enginePower)
+                .build();
     }
 
     private URL getUrl(Document doc) {
