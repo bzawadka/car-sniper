@@ -1,8 +1,14 @@
 package pl.bzawadka.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import java.net.URL;
 
+@Document(indexName = "customer", type = "customer", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Car extends BaseObject {
+    @Id
+    private String id;
     private Make make;
     private String model;
     private int year;
@@ -19,6 +25,14 @@ public class Car extends BaseObject {
         this.saleType = saleType;
         this.engine = engine;
         this.url = url;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Make getMake() {

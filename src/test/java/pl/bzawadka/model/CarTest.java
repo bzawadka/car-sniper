@@ -29,7 +29,7 @@ public class CarTest {
                 .createCar();
 
         assertThat(car).matches(
-                c -> c.toString().contains("[make=AUDI,model=A4,year=2008"));
+                c -> c.toString().contains("make=AUDI,model=A4,year=2008"));
         assertThat(car).matches(
                 c -> c.toString().contains("price=10000,currency=CHF"));
     }
