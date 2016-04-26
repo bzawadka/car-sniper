@@ -1,5 +1,9 @@
 package pl.bzawadka.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonDeserialize(builder = Engine.Builder.class)
 public class Engine extends BaseObject {
     private Fuel fuel;
     private double size;
@@ -27,8 +31,8 @@ public class Engine extends BaseObject {
         return new Builder();
     }
 
+    @JsonPOJOBuilder(buildMethodName = "createEngine", withPrefix = "set")
     public static class Builder {
-
         private Fuel fuel;
         private double size;
         private int power;

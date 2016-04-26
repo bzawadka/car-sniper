@@ -1,11 +1,14 @@
 package pl.bzawadka.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.net.URL;
 
 @Document(indexName = "customer", type = "customer", shards = 1, replicas = 0, refreshInterval = "-1")
+@JsonDeserialize(builder = Car.Builder.class)
 public class Car extends BaseObject {
     @Id
     private String id;
@@ -17,7 +20,8 @@ public class Car extends BaseObject {
     private Engine engine;
     private URL url;
 
-    public Car(Make make, String model, int year, Price price, SaleType saleType, Engine engine, URL url) {
+    public Car(String id, Make make, String model, int year, Price price, SaleType saleType, Engine engine, URL url) {
+        this.id = id;
         this.make = make;
         this.model = model;
         this.year = year;
@@ -67,7 +71,9 @@ public class Car extends BaseObject {
         return new Builder();
     }
 
+    @JsonPOJOBuilder(buildMethodName = "createCar", withPrefix = "set")
     public static class Builder {
+        private String id;
         private Make make;
         private String model;
         private int year;
@@ -75,6 +81,12 @@ public class Car extends BaseObject {
         private SaleType saleType;
         private Engine engine;
         private URL url;
+
+
+        public Builder setId(String id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder setMake(Make make) {
             this.make = make;
@@ -112,7 +124,7 @@ public class Car extends BaseObject {
         }
 
         public Car createCar() {
-            return new Car(make, model, year, price, saleType, engine, url);
+            return new Car(id, make, model, year, price, saleType, engine, url);
         }
     }
 }

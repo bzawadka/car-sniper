@@ -1,39 +1,28 @@
 package pl.bzawadka.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.bzawadka.CarRepository;
 import pl.bzawadka.model.Car;
-import pl.bzawadka.model.Engine;
-import pl.bzawadka.model.Price;
+import pl.bzawadka.model.Make;
 
 import java.net.MalformedURLException;
-import java.net.URL;
-
-import static pl.bzawadka.model.Currency.CHF;
-import static pl.bzawadka.model.Fuel.DIESEL;
-import static pl.bzawadka.model.Make.AUDI;
-import static pl.bzawadka.model.SaleType.AUCTION;
+import java.util.List;
 
 @RestController
 public class CarController {
+    private static Logger LOGGER = LoggerFactory.getLogger(CarController.class);
 
-    @RequestMapping(path = "/car")
-    public Car getCar() throws MalformedURLException {
-        return Car.builder()
-                .setMake(AUDI)
-                .setModel("A4")
-                .setYear(2008)
-                .setPrice(Price.builder()
-                        .setPrice(10000)
-                        .setCurrency(CHF)
-                        .createPrice())
-                .setSaleType(AUCTION)
-                .setEngine(Engine.builder()
-                        .setFuel(DIESEL)
-                        .setSize(2.0)
-                        .setPower(140)
-                        .createEngine())
-                .setUrl(new URL("http://car-sniper.ch/1234"))
-                .createCar();
+    @Autowired
+    private CarRepository carRepository;
+
+    @RequestMapping(path = "/cars")
+    public List<Car> getCars() throws MalformedURLException {
+        Make make = Make.AUDI;
+        LOGGER.info("Fetching cars: " + make);
+        return carRepository.findByMake(make);
     }
 }
