@@ -17,6 +17,7 @@ import static pl.bzawadka.model.SaleType.FIXED_PRICE;
 public class CarParser {
     private static Logger LOGGER = LoggerFactory.getLogger(CarParser.class);
 
+    private static final String ID_RESULT = "cf_result_open"; // <div id="cf_result_open_20216123" style=" display:block;">
     private static final String CLASS_NAME_HEADLINE = "headlinecontainer";
     private static final String CLASS_NAME_TITLE = "title_container";
     private static final String CLASS_PRICE = "favorite_price_container";
