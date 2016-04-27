@@ -15,7 +15,7 @@ public class EngineSizeParser {
 
     public static double parseEngineSize(String carDescription) {
         Matcher matcher = ENGINE_SIZE_PATTERN.matcher(carDescription);
-        if (matcher.find()) {
+        if (matcher.matches()) {
             return Double.valueOf(matcher.group(ENGINE_SIZE_REGEX_GROUP_NO));
         } else {
             LOGGER.warn("Engine size not matched from: " + carDescription);

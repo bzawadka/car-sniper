@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.net.URL;
 
-@Document(indexName = "customer", type = "customer", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "car", type = "car", shards = 1, replicas = 0, refreshInterval = "-1")
 @JsonDeserialize(builder = Car.Builder.class)
 public class Car extends BaseObject {
     @Id
