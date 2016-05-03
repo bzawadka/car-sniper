@@ -15,6 +15,14 @@ import static pl.bzawadka.model.SaleType.AUCTION;
 public class Garage {
 
     public static Car audiA4() {
+        return audiA4builder().build();
+    }
+
+    public static Car audiA5() {
+        return audiA4builder().withModel("A5").withYear(2015).build();
+    }
+
+    private static Car.Builder audiA4builder() {
         return Car.builder()
                 .withMake(AUDI)
                 .withModel("A4")
@@ -29,8 +37,7 @@ public class Garage {
                         .withSize(2.0)
                         .withPower(140)
                         .build())
-                .withUrl(url())
-                .build();
+                .withUrl(url());
     }
 
     private static URL url() {

@@ -15,6 +15,7 @@ public class Application implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 		this.carRepository.deleteAll();
 		carRepository.index(Garage.audiA4());
+		carRepository.index(Garage.audiA5());
 	}
 
 	public static void main(String[] args) {
