@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bzawadka.CarRepository;
 import pl.bzawadka.model.Car;
-import pl.bzawadka.model.Make;
 
 import java.net.MalformedURLException;
-import java.util.List;
 
 @RestController
 public class CarController {
@@ -20,9 +18,8 @@ public class CarController {
     private CarRepository carRepository;
 
     @RequestMapping(path = "/cars")
-    public List<Car> getCars() throws MalformedURLException {
-        Make make = Make.AUDI;
-        LOGGER.info("Fetching cars: " + make);
-        return carRepository.findByMake(make);
+    public Iterable<Car> getCars() throws MalformedURLException {
+        LOGGER.info("Fetching cars");
+        return carRepository.findAll();
     }
 }
