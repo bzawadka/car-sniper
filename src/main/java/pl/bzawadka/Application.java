@@ -13,9 +13,11 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		//this.carRepository.deleteAll();
-		//carRepository.index(Garage.mazda3());
-		//carRepository.index(Garage.mazda6());
+		this.carRepository.deleteAll();
+		carRepository.index(Garage.mazda3());
+		carRepository.index(Garage.mazda6());
+		carRepository.index(Garage.audiA4());
+		carRepository.index(Garage.audiA5());
 	}
 
 	public static void main(String[] args) {
